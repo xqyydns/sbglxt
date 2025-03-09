@@ -3,7 +3,6 @@
     <div style="margin: 10px 0">
       <el-input style="width: 150px" placeholder="请输入名称" suffix-icon="el-icon-search" v-model="devicename"></el-input>
       <el-input style="width: 150px; margin-left: 5px" placeholder="请输入类别" suffix-icon="el-icon-full-screen" v-model="type"></el-input>
-      <el-input style="width: 150px; margin-left: 5px" placeholder="请输入标准码" suffix-icon="el-icon-key" v-model="uniquecode"></el-input>
       <el-date-picker
           style="width: 350px; margin-left: 5px"
           placeholder="请选择时间段"

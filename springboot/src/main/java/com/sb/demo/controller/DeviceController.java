@@ -79,6 +79,7 @@ public Result findOne(@PathVariable Integer id) {
 public Result findPage(
         @RequestParam( required = false ,defaultValue = "") String type,
         @RequestParam( required = false ) String devicename,
+        @RequestParam String uniquecode,
         @RequestParam(defaultValue = "") String startTime,
         @RequestParam(defaultValue = "") String endTime,
 //        @RequestParam String date,
@@ -93,6 +94,7 @@ public Result findPage(
 //    }
 
         queryWrapper.like("devicename", devicename);
+        queryWrapper.like("uniquecode", uniquecode);
     if (!startTime.isEmpty() && !endTime.isEmpty()) { // 判断开始时间和结束时间是否为空字符串
         queryWrapper.between("buydate", startTime, endTime);
     }
