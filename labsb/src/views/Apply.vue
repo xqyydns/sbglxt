@@ -77,7 +77,7 @@
 <!--            <el-button type="primary" @click="callAnotherComponentMethod" :disabled="scope.row.state === '审核通过'">新增 <i class="el-icon-edit"></i></el-button>-->
 <!--          </div>-->
 
-          <el-button type="success" :disabled="user.role!=='ROLE_ADMIN'&&  scope.row.state!=='待审核' && scope.row.user !== user.username" @click="handleEdit(scope.row)">编辑 <i class="el-icon-edit"></i></el-button>
+          <el-button type="success" :disabled=" scope.row.state!=='待审核' || scope.row.user !== user.username" @click="handleEdit(scope.row)">编辑 <i class="el-icon-edit"></i></el-button>
 <!--          <el-popconfirm
               class="ml-5"
               confirm-button-text='确定'
