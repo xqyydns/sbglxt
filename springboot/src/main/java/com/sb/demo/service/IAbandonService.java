@@ -10,4 +10,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IAbandonService extends IService<Abandon> {
 
+    /**
+     * 删除num个对应的device的数量
+     * @param num
+     * @param uniquecode
+     */
+    void deleteByNum(Integer num, String uniquecode);
 }

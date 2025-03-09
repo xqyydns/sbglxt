@@ -28,7 +28,9 @@ public class Abandon implements Serializable {
       private String model;
 
 
-      private Integer quantity;
+      private Integer num;
+
+      private double oneprice;
 
 
       private String uniquecode;

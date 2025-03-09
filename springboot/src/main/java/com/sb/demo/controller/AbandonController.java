@@ -5,6 +5,7 @@ import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sb.demo.entity.Abandon;
+import com.sb.demo.service.IDeviceService;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -32,6 +33,7 @@ import java.util.List;
 @Resource
 private IAbandonService abandonService;
 
+
 // 新增或者更新
 @PostMapping
 public Result save(@RequestBody Abandon abandon) {
@@ -52,8 +54,16 @@ public Result findOne(@PathVariable Integer id) {
         return Result.success(abandonService.getById(id));
         }
 
+        @PostMapping("/reduce")
+        public Result deleteByNum(@RequestParam Integer num,@RequestParam String uniquecode){
+            abandonService.deleteByNum(num,uniquecode);
+            return  Result.success();
+        }
+
+
 @GetMapping("/page")
 public Result findPage(@RequestParam String equipname, @RequestParam String type,
+                       @RequestParam String uniquecode,
         @RequestParam Integer pageNum,
         @RequestParam(defaultValue = "") String startTime,
         @RequestParam(defaultValue = "") String endTime,
@@ -61,6 +71,7 @@ public Result findPage(@RequestParam String equipname, @RequestParam String type
         QueryWrapper<Abandon> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("id");
         queryWrapper.like("equipname",equipname);
+        queryWrapper.like("uniquecode",uniquecode);
         queryWrapper.like("type",type);
 
     if (!startTime.isEmpty() && !endTime.isEmpty()) { // 判断开始时间和结束时间是否为空字符串
@@ -84,7 +95,7 @@ public Result findPage(@RequestParam String equipname, @RequestParam String type
         writer.addHeaderAlias("model", "型号");
 
         writer.addHeaderAlias("oneprice", "单价");
-        writer.addHeaderAlias("quantity", "数量");
+        writer.addHeaderAlias("num", "数量");
         writer.addHeaderAlias("uniquecode", "标准码");
         writer.addHeaderAlias("abandondate", "报废日期");
 

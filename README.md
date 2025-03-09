@@ -1,5 +1,5 @@
 
-# **开源项目Laboratory-management-system----实验室管理系统（前后台基于SpringBoot+Vue）**
+# **开源项目sbglxt----设备管理系统（前后台基于SpringBoot+Vue）**
 
 
 

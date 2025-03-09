@@ -74,6 +74,7 @@ export default {
         }
       })
     },
+    /* TODO 图片路径 */
     handleAvatarSuccess(res) {
       this.form.avatarUrl = res
     }

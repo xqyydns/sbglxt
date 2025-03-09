@@ -6,6 +6,8 @@ import com.sb.demo.service.IAbandonService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * @author 穆淼森
  * @create 2024-01-11-19:07
@@ -13,5 +15,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AbandonServiceImpl extends ServiceImpl<AbandonMapper, Abandon> implements IAbandonService {
+    @Resource
+    AbandonMapper abandonMapper;
 
+    @Override
+    public void deleteByNum(Integer num, String uniquecode) {
+        abandonMapper.deleteByDeviceNum(num,uniquecode);
+    }
 }
