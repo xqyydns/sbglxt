@@ -65,7 +65,7 @@
       <el-table-column prop="state" label="申请状态"></el-table-column>
       <el-table-column  label="审核" v-if="user.role === 'ROLE_ADMIN'"  width="240">
         <template v-slot="scope">
-          <el-button type="success" @click="changeState(scope.row, '审核通过')" :disabled="scope.row.state !== '待审核'">审核通过</el-button>
+          <el-button type="success" @click="addDevice(scope.row, '审核通过')" :disabled="scope.row.state !== '待审核'">审核通过</el-button>
           <el-button type="danger" @click="changeState(scope.row, '审核不通过')" :disabled="scope.row.state !== '待审核'">审核不通过</el-button>
         </template>
       </el-table-column>
@@ -77,7 +77,7 @@
 <!--            <el-button type="primary" @click="callAnotherComponentMethod" :disabled="scope.row.state === '审核通过'">新增 <i class="el-icon-edit"></i></el-button>-->
 <!--          </div>-->
 
-          <el-button type="success" :disabled="user.role!=='ROLE_ADMIN' && scope.row.user !== user.username" @click="handleEdit(scope.row)">编辑 <i class="el-icon-edit"></i></el-button>
+          <el-button type="success" :disabled="user.role!=='ROLE_ADMIN'&&  scope.row.state!=='待审核' && scope.row.user !== user.username" @click="handleEdit(scope.row)">编辑 <i class="el-icon-edit"></i></el-button>
 <!--          <el-popconfirm
               class="ml-5"
               confirm-button-text='确定'
@@ -202,6 +202,16 @@ export default {
     changeState(row, state) {
       this.form = JSON.parse(JSON.stringify(row))
       this.form.state = state;
+      this.save();
+    },
+    addDevice(row, state) {
+      this.form = JSON.parse(JSON.stringify(row))
+      this.form.state = state;
+      this.request.post("/apply/pass",this.form).then(
+          res=>{
+
+          }
+      )
       this.save();
     },
     load() {

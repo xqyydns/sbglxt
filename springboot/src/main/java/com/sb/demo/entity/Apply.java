@@ -33,9 +33,9 @@ public class Apply implements Serializable {
 //  ("设备名")
   private String devicename;
 //  ("单价")
-  private String oneprice;
+  private Double oneprice;
 //  ("数量")
-  private String quantity;
+  private Integer quantity;
 
 //  ("保修期")
   private String expirationdate;

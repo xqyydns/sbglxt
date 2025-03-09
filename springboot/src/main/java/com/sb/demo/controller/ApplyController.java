@@ -6,9 +6,12 @@ import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sb.demo.common.RoleEnum;
+import com.sb.demo.entity.Device;
 import com.sb.demo.entity.User;
+import com.sb.demo.service.IDeviceService;
 import com.sb.demo.utils.TokenUtils;
 import com.sb.demo.entity.Apply;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -25,6 +28,8 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * @author 穆淼森
@@ -37,6 +42,8 @@ import java.util.List;
     
 @Resource
 private IApplyService applyService;
+@Resource
+private IDeviceService deviceService;
 
     // 新增或者更新
     @PostMapping
@@ -55,6 +62,38 @@ private IApplyService applyService;
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
         applyService.removeById(id);
+        return Result.success();
+    }
+
+    @PostMapping("/pass")
+    public Result applyPass(@RequestBody Apply apply) {
+        Device device = Device.builder()
+                        .type(apply.getType())
+                                .devicename(apply.getDevicename())
+                                        .model(apply.getModel())
+                                                .oneprice(apply.getOneprice())
+                .quantity(apply.getQuantity())
+                .expirationdate(apply.getExpirationdate())
+                .user(apply.getUser())
+                .build();
+        //现在日期
+        Date currentDate =  DateUtil.date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        device.setBuydate(dateFormat.format(currentDate));
+        //12位随机数
+        Random random=new Random();
+        String str="";
+        for (int i = 0; i <12; i++) {
+            if(i==0){
+                //首位不能为0且数字取值区间为 [1,9]
+                str+=(random.nextInt(9)+1);
+            }else{
+                //其余位的数字的取值区间为 [0,9]
+                str+=random.nextInt(10);
+            }
+        }
+        device.setUniquecode(str);
+        deviceService.save(device);
         return Result.success();
     }
 

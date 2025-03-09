@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import sun.util.calendar.LocalGregorianCalendar;
@@ -19,6 +20,7 @@ import sun.util.calendar.LocalGregorianCalendar;
  */
 @Getter
 @Setter
+@Builder
 public class Device implements Serializable {
 
     private static final long serialVersionUID = 1L;
