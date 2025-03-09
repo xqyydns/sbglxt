@@ -17,12 +17,6 @@
 
 （gitee）：https://gitee.com/mu-miaosen/sbglxt
 
-### 项目介绍
-
-#### 	项目演示
-
-![f20ba7184f13e95cae212ec8f884e7f](E:\软件\typora做的笔记\博客笔记\图片\f20ba7184f13e95cae212ec8f884e7f.jpg)
-
 
 ### 技术栈
 
@@ -47,12 +41,6 @@
 | Axios      | 前端HTTP框架    |
 | js-cookie  | cookie管理工具  |
 
-#### 运行部署
-
-| 技术   | 说明                       |
-| ------ | -------------------------- |
-| Nginx  | 静态资源服务器             |
-| Docker | 应用容器引擎(快速隔离部署) |
 
 
 
