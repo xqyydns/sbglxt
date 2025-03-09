@@ -16,31 +16,37 @@
 
 -- 导出  表 syssbglxt.abandon 结构
 CREATE TABLE IF NOT EXISTS `abandon` (
-  `id` int NOT NULL COMMENT '编号',
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '编号',
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '类型',
   `equipName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '设备名',
   `model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '型号',
-  `quantity` int NOT NULL COMMENT '数量',
-  `uniqueCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '标准码',
+  `onePrice` double(10,2) DEFAULT NULL COMMENT '单价',
+  `num` int NOT NULL DEFAULT '0' COMMENT '数量',
+  `uniqueCode` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标准码',
   `abandonDate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期',
-  `state` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '待审核' COMMENT '审核中，审核不通过，审核通过'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='设备报废表';
+  `state` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '待审核' COMMENT '审核中，审核不通过，审核通过',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='设备报废表';
 
--- 正在导出表  syssbglxt.abandon 的数据：~12 rows (大约)
-INSERT INTO `abandon` (`id`, `type`, `equipName`, `model`, `quantity`, `uniqueCode`, `abandonDate`, `state`) VALUES
-	(1, '1', '1', '1', 1, '1', '2024-01-13   19:10', '审核通过'),
-	(3, '实验用品', '烧杯', '江玻', 3, '111119419341', '2024-01-13 19:29', '审核通过'),
-	(4, '实验用品', '量杯', '惠利得', 5, '358110453408', '2024-01-13 19:20', '审核通过'),
-	(5, '实验用品', '培养皿', '江玻', 30, '496968755714', '2024-01-13 19:35', '审核通过'),
-	(6, '实验用品', '酒精灯', '香波', 1, '796400146664', '2024-01-13 19:35', '审核通过'),
-	(7, '实验用品', '烧杯', '江玻', 4, '633690983472', '2024-01-13 20:00', '审核通过'),
-	(8, '实验用品', '玻璃滴定管', '8LABSHARK', 1, '113721191073', '2024-01-13 20:00', '审核通过'),
-	(9, '实验用品', '锥形瓶', '江玻', 2, '301071265701', '2024-01-17 11:42', '审核通过'),
-	(10, '实验用品', '移液器', 'BKMAMLAB', 2, '617986526061', '2024-01-17 11:42', '审核通过'),
-	(11, '实验用品', '缓冲液', '比克曼', 2, '428615504280', '2023-08-11 11:11', '审核通过'),
-	(12, '实验用品', '培养皿', '垒固', 4, '817472290817', '', '审核不通过'),
-	(13, '实验用品', '量杯', '惠利得', 1, '213335100552', '2024-01-18 10:52', '审核通过'),
-	(99, '实验用品', 'ph计', '海斯迪克', 2, '831578252293', '2024-01-19 11:44', '审核通过');
+-- 正在导出表  syssbglxt.abandon 的数据：~13 rows (大约)
+INSERT INTO `abandon` (`id`, `type`, `equipName`, `model`, `onePrice`, `num`, `uniqueCode`, `abandonDate`, `state`) VALUES
+	(3, '实验用品', '烧杯', '江玻', NULL, 3, '111119419341', '2024-01-13 19:29', '审核通过'),
+	(4, '实验用品', '量杯', '惠利得', NULL, 5, '358110453408', '2024-01-13 19:20', '审核通过'),
+	(5, '实验用品', '培养皿', '江玻', NULL, 30, '496968755714', '2024-01-13 19:35', '审核通过'),
+	(6, '实验用品', '酒精灯', '香波', NULL, 1, '796400146664', '2024-01-13 19:35', '审核通过'),
+	(7, '实验用品', '烧杯', '江玻', NULL, 4, '633690983472', '2024-01-13 20:00', '审核通过'),
+	(8, '实验用品', '玻璃滴定管', '8LABSHARK', NULL, 1, '113721191073', '2024-01-13 20:00', '审核通过'),
+	(9, '实验用品', '锥形瓶', '江玻', NULL, 2, '301071265701', '2024-01-17 11:42', '审核通过'),
+	(10, '实验用品', '移液器', 'BKMAMLAB', NULL, 2, '617986526061', '2024-01-17 11:42', '审核通过'),
+	(11, '实验用品', '缓冲液', '比克曼', NULL, 2, '428615504280', '2023-08-11 11:11', '审核通过'),
+	(12, '实验用品', '培养皿', '垒固', NULL, 4, '817472290817', '', '审核不通过'),
+	(13, '实验用品', '量杯', '惠利得', NULL, 1, '213335100552', '2024-01-18 10:52', '审核通过'),
+	(14, '实验器械', '实验室工作台', '爱迪生1.0', 3259.00, 1, '205733219251', NULL, '待审核'),
+	(15, '实验器械', '实验室工作台', '爱迪生1.0', 3259.00, 1, '205733219251', NULL, '待审核'),
+	(16, '实验器械', '实验室工作台', '爱迪生1.0', 3259.00, 1, '205733219251', NULL, '待审核'),
+	(17, '实验器械', '实验室工作台', '爱迪生1.0', 3259.00, 5, '205733219251', '2025-03-09 11:35', '审核通过'),
+	(99, '实验用品', 'ph计', '海斯迪克', NULL, 2, '831578252293', '2024-01-19 11:44', '审核通过'),
+	(100, '实验器械', '离心机', 'JOANLAB', 779.00, 1, '650416701463', NULL, '待审核');
 
 -- 导出  表 syssbglxt.apply 结构
 CREATE TABLE IF NOT EXISTS `apply` (
@@ -48,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `apply` (
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '类型',
   `deviceName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '设备名',
   `model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '型号',
-  `onePrice` int NOT NULL COMMENT '单价',
+  `onePrice` double(10,2) NOT NULL DEFAULT '0.00' COMMENT '单价',
   `quantity` int NOT NULL COMMENT '数量',
   `expirationDate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '保质期',
   `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '负责人',
@@ -56,20 +62,23 @@ CREATE TABLE IF NOT EXISTS `apply` (
   `time` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '申请时间',
   `state` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '待审核' COMMENT '待审核，审核不通过，审核通过',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='申请添加表';
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='申请添加表';
 
--- 正在导出表  syssbglxt.apply 的数据：~6 rows (大约)
+-- 正在导出表  syssbglxt.apply 的数据：~10 rows (大约)
 INSERT INTO `apply` (`id`, `type`, `deviceName`, `model`, `onePrice`, `quantity`, `expirationDate`, `user`, `img`, `time`, `state`) VALUES
-	(1, '实验用品', '一次性棉棒', '江玻', 1, 100, '30天', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:51', '审核通过'),
-	(2, '实验用品', '玻璃滴定管', 'LABSHARK', 61, 50, '30天', 'admin', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-12 19:52', '待审核'),
-	(3, '实验用品', '霉菌培养箱', 'SPX-460B', 5770, 1, '2年', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:48', '待审核'),
-	(4, '实验用品', '计量杯', '惠利得', 14, 50, '30天', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:52', '待审核'),
-	(5, '实验用品', '塑料漏斗', 'YIKEYI', 1, 50, '30天', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:49', '审核通过'),
-	(6, '实验用品', '玻璃蓝盖', '蜀牛', 3, 50, '30天', 'admin', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-12 16:05', '审核通过'),
-	(27, '实验用品', '烧杯', '江玻', 7, 50, '保修两年', 'mms', 'http://localhost:9090/file/2a8bd5b42bb94beba61bcdc5916a7ce6.png', '2024-01-13 21:50', '审核不通过'),
-	(28, '实验用品', '培养皿', '江玻', 13, 50, '2年保修', 'mms', 'http://localhost:9090/file/d174e30f90754c31ae8fd812d0bd4ff7.jfif', '2024-01-18 10:58', '审核通过'),
-	(29, '实验用品', '酒精', '99%', 25, 50, '7天', 'mms', NULL, '2024-01-20 13:39', '审核不通过'),
-	(30, '实验用品', '擦镜纸', '比克曼', 17, 50, '30天', 'mujie', 'http://localhost:9090/file/ba738d096584418eb413118850eb9287.png', '2024-02-25 12:12', '审核通过');
+	(1, '实验用品', '一次性棉棒', '江玻', 1.50, 100, '30天', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:51', '审核通过'),
+	(2, '实验用品', '玻璃滴定管', 'LABSHARK', 61.80, 50, '30天', 'admin', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-12 19:52', '待审核'),
+	(3, '实验用品', '霉菌培养箱', 'SPX-460B', 5770.00, 1, '2年', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:48', '待审核'),
+	(4, '实验用品', '计量杯', '惠利得', 14.20, 50, '30天', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:52', '待审核'),
+	(5, '实验用品', '塑料漏斗', 'YIKEYI', 0.90, 50, '30天', 'zzz', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-13 13:49', '审核通过'),
+	(6, '实验用品', '玻璃蓝盖', '蜀牛', 3.00, 50, '30天', 'admin', 'http://localhost:9090/file/45e5b87240054f35928c624a2da6b862.jpg', '2024-01-12 16:05', '审核通过'),
+	(27, '实验用品', '烧杯', '江玻', 7.50, 50, '保修两年', 'mms', 'http://localhost:9090/file/2.png', '2024-01-13 21:50', '审核不通过'),
+	(28, '实验用品', '培养皿', '江玻', 12.80, 50, '2年保修', 'mms', 'http://localhost:9090/file/d174e30f90754c31ae8fd812d0bd4ff7.jfif', '2024-01-18 10:58', '审核通过'),
+	(29, '实验用品', '酒精', '99%', 25.00, 50, '7天', 'mms', NULL, '2024-01-20 13:39', '审核不通过'),
+	(30, '实验用品', '擦镜纸', '比克曼', 16.80, 50, '30天', 'mujie', 'http://localhost:9090/file/ba738d096584418eb413118850eb9287.png', '2024-02-25 12:12', '审核通过'),
+	(31, '实验器械', '测试申请购买', '申请型号', 1.80, 12, '3年', 'mujie', NULL, '2025-03-09 12:35', '审核通过'),
+	(32, '实验用品', '测试生成12位随机数', '测试生成12位随机数', 12.50, 200, '5年', 'mujie', NULL, '2025-03-09 12:43', '审核通过'),
+	(33, '实验用品', '测试待审核可编辑', '编辑', 13.50, 20, '100年', 'mujie', NULL, '2025-03-09 13:01', '待审核');
 
 -- 导出  表 syssbglxt.device 结构
 CREATE TABLE IF NOT EXISTS `device` (
@@ -84,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `device` (
   `expirationDate` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '保质期',
   `user` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '经办人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='设备管理表';
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='设备管理表';
 
 -- 正在导出表  syssbglxt.device 的数据：~19 rows (大约)
 INSERT INTO `device` (`id`, `type`, `deviceName`, `model`, `onePrice`, `quantity`, `buyDate`, `uniqueCode`, `expirationDate`, `user`) VALUES
@@ -106,7 +115,9 @@ INSERT INTO `device` (`id`, `type`, `deviceName`, `model`, `onePrice`, `quantity
 	(16, '实验器械', '量杯', '惠利得', 9.00, 50, '2024-01-13 20:32:27', '337264333030', '30天', 'admin'),
 	(21, '实验用品', '一次性手套', '英科', 0.20, 200, '2024-01-13 22:35:34', '545975401620', '7天', 'admin'),
 	(22, '实验器械', '烧杯', '江玻', 4.50, 30, '2024-01-17 16:00:38', '077151016402', '7天', 'admin'),
-	(26, '实验器械', '实验室工作台', '爱迪生1.0', 3259.00, 6, '2024-01-17 17:00:38', '205733219251', '1年保修', 'admin');
+	(26, '实验器械', '实验室工作台', '爱迪生1.0', 3259.00, -6, '2024-01-17 17:00:38', '205733219251', '1年保修', 'admin'),
+	(27, '实验器械', '测试申请购买', '申请型号', 1.80, 12, '2025-03-09 12:35:49', '131646513321', '3年', 'mujie'),
+	(28, '实验用品', '测试生成12位随机数', '测试生成12位随机数', 12.50, 200, '2025-03-09 12:51:38', '266768986051', '5年', 'mujie');
 
 -- 导出  表 syssbglxt.notice 结构
 CREATE TABLE IF NOT EXISTS `notice` (
@@ -509,9 +520,9 @@ CREATE TABLE IF NOT EXISTS `sys_role` (
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
   `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '唯一标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='权限划分表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='权限划分表';
 
--- 正在导出表  syssbglxt.sys_role 的数据：~3 rows (大约)
+-- 正在导出表  syssbglxt.sys_role 的数据：~2 rows (大约)
 INSERT INTO `sys_role` (`id`, `name`, `description`, `flag`) VALUES
 	(1, '管理员', '管理员', 'ROLE_ADMIN'),
 	(8, '普通学生', '学生', 'ROLE_STUDENT');
@@ -570,16 +581,17 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
   `avatar_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '头像',
   `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '角色',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
--- 正在导出表  syssbglxt.sys_user 的数据：~4 rows (大约)
+-- 正在导出表  syssbglxt.sys_user 的数据：~7 rows (大约)
 INSERT INTO `sys_user` (`id`, `username`, `password`, `nickname`, `email`, `phone`, `address`, `create_time`, `avatar_url`, `role`) VALUES
 	(1, 'admin', 'admin', '管理员', '222222222@qq.com', '19935441736', '明向', '2024-01-09 07:10:27', 'http://localhost:9090/file/493b61ea9bbb400b94ef5e928832bdd5.PNG', 'ROLE_ADMIN'),
 	(14, 'zzz', '123', 'zzz', '3310305943@qq.com', NULL, '上海', '2024-01-09 11:26:51', NULL, 'ROLE_STUDENT'),
 	(15, 'test', '202cb962ac59075b964b07152d234b70', 'cbx', '111111111@qq.com', '', '南极洲', '2024-01-12 04:12:32', NULL, 'ROLE_STUDENT'),
 	(22, 'mms', '123', 'mms', '2162246325@qq.com', NULL, NULL, '2024-01-19 03:41:22', NULL, 'ROLE_STUDENT'),
 	(23, 'mujie', 'mujie', 'mujie', '1029072090@qq.com', NULL, NULL, '2024-02-25 04:09:12', NULL, 'ROLE_STUDENT'),
-	(24, 'test', 'test', 'test', '2418097466@qq.com', NULL, NULL, '2025-03-05 13:42:54', NULL, 'ROLE_STUDENT');
+	(24, 'test', 'test', 'test', '2418097466@qq.com', NULL, NULL, '2025-03-05 13:42:54', NULL, 'ROLE_STUDENT'),
+	(25, NULL, '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL, NULL, '2025-03-05 14:02:19', NULL, 'ROLE_STUDENT');
 
 -- 导出  表 syssbglxt.validation 结构
 CREATE TABLE IF NOT EXISTS `validation` (
