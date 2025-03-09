@@ -6,11 +6,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/syssbglxt?serverTimezone=GMT%2b8
     username: root
-    password: mumiaosen123
+    password: xxxxxx
   redis:
     host: localhost
     port: 6379
-    password: mumiaosen123
+    password: xxxxxx
     database: 0
   servlet:
     multipart:
